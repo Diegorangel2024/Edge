@@ -1,0 +1,896 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edge - Fashion House</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #305229;
+            margin: 0;
+            padding: 0;
+        }
+        .header {
+            display: flex;
+            justify-content: space-between;
+            padding: 20px;
+            background-color: #333;
+            color: white;
+            align-items: center;
+        }
+        .header h1 {
+            margin: 0;
+        }
+        .menu {
+            display: flex;
+            justify-content: center;
+            background-color: #444;
+            padding: 10px 0;
+        }
+        .menu button {
+            background-color: #25d366;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 10px;
+            font-size: 1em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .menu button:hover {
+            background-color: #128c7e;
+        }
+        .submenu {
+            display: none;
+            justify-content: center;
+            padding: 10px 0;
+            background-color: #555;
+        }
+        .submenu button {
+            background-color: #128c7e;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            margin: 0 5px;
+            font-size: 0.9em;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+        .submenu button:hover {
+            background-color: #0c6b52;
+        }
+        .cart-icon {
+            cursor: pointer;
+            font-size: 1.5em;
+        }
+        .cart-count {
+            background-color: transparent;
+            border-radius: 50%;
+            padding: 5px 10px;
+            color: white;
+            font-size: 1em;
+        }
+        .product {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+            padding: 10px;
+        }
+        .product-card {
+            background-color: #fff;
+            padding: 8px;
+            margin: 3px;
+            width: 150px;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .product-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
+        .product-card h3 {
+            margin: 10px 0;
+            font-size: 1.2em;
+            color: #333;
+        }
+        .product-card p {
+            color: #888;
+        }
+        .add-to-cart-button {
+            background-color: #25d366;
+            color: white;
+            padding: 10px;
+            margin-top: 10px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .add-to-cart-button:hover {
+            background-color: #128c7e;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <!-- Imagem da marca -->
+        <img src="https://i.imgur.com/u6glwcw.jpeg" alt="Imagem do Perfume" width="50" height="50" />
+        
+        <!-- Nome da marca com coroa -->
+        <div class="title-container">
+            <span class="crown">&#x1F451;</span>
+            <h1>Edge - Fashion House</h1>
+        </div>
+
+        <!-- Ícone do carrinho -->
+        <div class="cart-icon" onclick="window.location.href = 'carrinho.html'">
+            🛒 <span id="cart-count" class="cart-count">0</span>
+        </div>
+    </div>
+
+   <!-- Menu -->
+   <div class="menu">
+    <button onclick="toggleSubmenu('perfumes-submenu')">Perfumes</button>
+    <button onclick="toggleSubmenu('roupas-submenu')">Roupas</button>
+    <button onclick="toggleSubmenu('acessorios-submenu')">Acessórios</button>
+    <button onclick="window.location.href = 'maquiagem.html'">Maquiagem</button>
+    
+</div>
+
+<!-- Submenus -->
+<div id="roupas-submenu" class="submenu">
+    <button onclick="window.location.href = 'roupas-masculino.html'">Masculino</button>
+    <button onclick="window.location.href = 'roupas-feminino.html'">Feminino</button>
+</div>
+<div id="acessorios-submenu" class="submenu">
+    <button onclick="window.location.href = 'acessórios-masculino.html'">Masculino</button>
+    <button onclick="window.location.href = 'acessórios-feminino.html'">Feminino</button>
+</div>
+<div id="perfumes-submenu" class="submenu">
+    <button onclick="window.location.href = 'index.html'">Masculino</button>
+    <button onclick="window.location.href = 'perfumes-feminino.html'">Feminino</button>
+</div>
+
+<script>
+    // Função para abrir/fechar submenus
+    function toggleSubmenu(submenuId) {
+        // Fecha todos os submenus
+        const submenus = document.querySelectorAll('.submenu');
+        submenus.forEach(submenu => {
+            if (submenu.id === submenuId) {
+                // Alterna o submenu atual
+                submenu.style.display = submenu.style.display === 'flex' ? 'none' : 'flex';
+            } else {
+                submenu.style.display = 'none';
+            }
+        });
+    }
+</script>
+
+</body>
+</html>
+
+    <div class="product">
+        <!-- Produto 1 -->
+        <div class="product-card">
+            <img src="https://i.imgur.com/g1pdu4b.jpeg" alt="Masculino">
+            <h3>1 Million - Paco Rabanne</h3>
+            <p>R$ 200</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 1', 200)">Adicionar ao Carrinho</button>
+        </div>
+        <!-- Produto 2 -->
+        <div class="product-card">
+            <img src="https://i.imgur.com/Lm5jJri.jpeg" alt="Masculino">
+            <h3>212 VIP Men - Carolina Herrera</h3>
+            <p>R$ 250</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 2', 250)">Adicionar ao Carrinho</button>
+        </div>
+        <!-- Produto 3 -->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+        <!--Produto 4-->
+        <div class="product-card">
+            <img src="https://i.imgur.com/aQhlzIM.jpeg" alt="Masculino">
+            <h3>Acqua di Giò - Giorgio Armani</h3>
+            <p>R$ 300</p>
+            <button class="add-to-cart-button" onclick="adicionarAoCarrinho('Perfume 3', 300)">Adicionar ao Carrinho</button>
+        </div>
+
+
+
+
+    </div>
+
+    <script>
+        // Função para adicionar um item ao carrinho
+        function adicionarAoCarrinho(nome, preco) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.push({ name: nome, price: preco });
+            localStorage.setItem('cart', JSON.stringify(cart));
+            atualizarContagemCarrinho();
+            exibirItensCarrinho(); // Chama a função para atualizar a lista de itens no carrinho
+        }
+    
+        // Função para atualizar a quantidade de itens no carrinho
+        function atualizarContagemCarrinho() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            document.getElementById('cart-count').textContent = cart.length;
+        }
+    
+        // Função para exibir os itens do carrinho na tela de produtos
+        function exibirItensCarrinho() {
+            const cart = JSON.parse(localStorage.getItem('cart')) || [];
+            let cartContainer = document.getElementById('cart-container');
+            cartContainer.innerHTML = ''; // Limpa o conteúdo atual
+    
+            cart.forEach((item, index) => {
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+    
+                const itemImage = document.createElement('img');
+                itemImage.src = 'link-da-imagem-do-perfume'; // Substitua com o link real da imagem do produto
+                itemImage.alt = item.name;
+                itemImage.width = 50; // Tamanho da imagem
+    
+                const itemName = document.createElement('p');
+                itemName.textContent = item.name;
+    
+                const itemPrice = document.createElement('p');
+                itemPrice.textContent = `R$ ${item.price}`;
+    
+                const removeButton = document.createElement('button');
+                removeButton.textContent = 'Remover';
+                removeButton.classList.add('remove-from-cart-button');
+                removeButton.onclick = function() {
+                    removerDoCarrinho(index);
+                };
+    
+                cartItem.appendChild(itemImage);
+                cartItem.appendChild(itemName);
+                cartItem.appendChild(itemPrice);
+                cartItem.appendChild(removeButton);
+                cartContainer.appendChild(cartItem);
+            });
+        }
+    
+        // Função para remover um item do carrinho
+        function removerDoCarrinho(index) {
+            let cart = JSON.parse(localStorage.getItem('cart')) || [];
+            cart.splice(index, 1); // Remove o item no índice fornecido
+            localStorage.setItem('cart', JSON.stringify(cart));
+            atualizarContagemCarrinho();
+            exibirItensCarrinho(); // Atualiza a exibição do carrinho
+        }
+    
+        // Atualiza a contagem do carrinho e exibe os itens ao carregar a página
+        atualizarContagemCarrinho();
+        exibirItensCarrinho();
+    </script>
+    
+
+</body>
+</html>
