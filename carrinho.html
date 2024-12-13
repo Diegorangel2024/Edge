@@ -35,20 +35,19 @@
             color: #333;
         }
         .whatsapp-button, .clear-cart-button {
-    background-color: #25d366;
-    color: white;
-    font-size: 1.5em;
-    padding: 15px 30px;
-    border-radius: 5px;
-    cursor: pointer;
-    display: inline-block;  /* Alterado para inline-block para ajustar o tamanho */
-    text-align: center;
-    margin-top: 20px;
-    text-decoration: none;
-    max-width: 1000px;  /* Largura máxima do botão */
-    width: auto;  /* Deixa o botão ajustar seu tamanho */
-}
-        
+            background-color: #25d366;
+            color: white;
+            font-size: 1.5em;
+            padding: 15px 30px;
+            border-radius: 5px;
+            cursor: pointer;
+            display: inline-block;
+            text-align: center;
+            margin-top: 20px;
+            text-decoration: none;
+            max-width: 1000px;
+            width: auto;
+        }
         .whatsapp-button:hover, .clear-cart-button:hover {
             background-color: #128c7e;
         }
@@ -69,6 +68,19 @@
     <script>
         let cart = JSON.parse(localStorage.getItem('cart')) || [];
 
+        // Função para adicionar itens ao carrinho
+        function adicionarAoCarrinho(nome, preco) {
+            const item = {
+                name: nome,
+                price: preco
+            };
+
+            cart.push(item);
+            localStorage.setItem('cart', JSON.stringify(cart));
+            alert(`${nome} foi adicionado ao carrinho!`);
+            renderCart();
+        }
+
         // Função para renderizar os itens do carrinho
         function renderCart() {
             const cartItemsContainer = document.getElementById('cart-items');
@@ -80,14 +92,15 @@
             }
 
             cart.forEach(item => {
-    const cartItem = document.createElement('div');
-    cartItem.classList.add('cart-item');
-    cartItem.innerHTML = `
-        <span>${item.name}</span>
-        <span>R$ ${item.price}</span>
-    `;
-    cartItemsContainer.appendChild(cartItem);
-});
+                const cartItem = document.createElement('div');
+                cartItem.classList.add('cart-item');
+                cartItem.innerHTML = `
+                    <span>${item.name}</span>
+                    <span>R$ ${item.price.toFixed(2)}</span>
+                `;
+                cartItemsContainer.appendChild(cartItem);
+            });
+        }
 
         // Função para limpar o carrinho
         function limparCarrinho() {
@@ -101,10 +114,10 @@
         function enviarPedidoWhatsapp() {
             let mensagem = "Pedido:\n\n";
             cart.forEach(item => {
-                mensagem += `${item.name} - R$ ${item.price}\n`;
+                mensagem += `${item.name} - R$ ${item.price.toFixed(2)}\n`;
             });
 
-            mensagem += `\nTotal: R$ ${calcularTotal()}`;
+            mensagem += `\nTotal: R$ ${calcularTotal().toFixed(2)}`;
 
             let whatsappLink = `https://wa.me/595994374570?text=${encodeURIComponent(mensagem)}`;
 
@@ -119,6 +132,11 @@
         // Inicializa e renderiza o carrinho ao carregar a página
         renderCart();
     </script>
+
+    <!-- Exemplo de botões para adicionar produtos -->
+    <button onclick="adicionarAoCarrinho('Perfume Floral', 120.00)">Adicionar Perfume Floral</button>
+    <button onclick="adicionarAoCarrinho('Creme Hidratante', 50.00)">Adicionar Creme Hidratante</button>
+    <button onclick="adicionarAoCarrinho('Loção Corporal', 80.00)">Adicionar Loção Corporal</button>
 
 </body>
 </html>
