@@ -80,15 +80,14 @@
             }
 
             cart.forEach(item => {
-                const cartItem = document.createElement('div');
-                cartItem.classList.add('cart-item');
-                cartItem.innerHTML = `
-                    <span>${item.name}</span>
-                    <span>R$ ${item.price}</span>
-                `;
-                cartItemsContainer.appendChild(cartItem);
-            });
-        }
+    const cartItem = document.createElement('div');
+    cartItem.classList.add('cart-item');
+    cartItem.innerHTML = `
+        <span>${item.name}</span>
+        <span>R$ ${item.price}</span>
+    `;
+    cartItemsContainer.appendChild(cartItem);
+});
 
         // Função para limpar o carrinho
         function limparCarrinho() {
