@@ -105,7 +105,7 @@
                 mensagem += `${item.name} - R$ ${item.price}\n`;
             });
 
-            mensagem += `\nTotal: R$ ${calcularTotal()}\n\nEnviar pedido para o WhatsApp.`;
+            mensagem += `\nTotal: R$ ${calcularTotal()}`;
 
             let whatsappLink = `https://wa.me/595994374570?text=${encodeURIComponent(mensagem)}`;
 
